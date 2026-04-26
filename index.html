@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mikat | Namaz Vakitleri & Kıble</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #031815;
+            color: #e2e8f0;
+        }
+        
+        .gold-gradient {
+            background: linear-gradient(135deg, #D4AF37 0%, #F1D36E 50%, #B8860B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+            transition: all 0.3s ease;
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px rgba(255, 255, 255, 0.1) solid;
+        }
+
+        #privacy-modal {
+            display: none;
+            backdrop-filter: blur(8px);
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <nav class="container mx-auto px-6 py-8 flex justify-between items-center">
+        <div class="text-3xl font-extrabold gold-gradient tracking-tighter">MİKAT</div>
+        <div>
+            <button onclick="openModal()" class="text-sm font-medium opacity-60 hover:opacity-100 transition">Gizlilik Politikası</button>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-6 pt-12 pb-24 flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 text-center md:text-left">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
+                Vaktini <span class="gold-gradient">Mikat</span> İle Yakala
+            </h1>
+            <p class="text-lg md:text-xl opacity-70 mb-10 max-w-lg">
+                Hassas namaz vakitleri, doğru Kıble açısı ve huzur veren bildirimler. Her an, her yerde maneviyata açılan kapınız.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                <a href="https://expo.dev/artifacts/eas/bxwswHMspN9z54xonZ8jNe.apk" class="btn-gold text-black px-10 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-3">
+                    <i class="fab fa-android text-2xl"></i>
+                    APK İndir
+                </a>
+            </div>
+            
+            <p class="mt-6 text-sm opacity-40">Tıkla ve anında telefonuna yükle.</p>
+        </div>
+
+        <div class="md:w-1/2 mt-16 md:mt-0 relative flex justify-center">
+            <div class="absolute w-72 h-72 bg-[#D4AF37] opacity-10 blur-[100px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+            <div class="glass w-64 h-[500px] rounded-[3rem] border-[8px] border-[#1a2e2b] relative overflow-hidden shadow-2xl">
+                <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
+                    <div class="text-[#D4AF37] mb-4"><i class="fas fa-kaaba text-5xl"></i></div>
+                    <div class="text-xs gold-gradient font-bold mb-2 uppercase">Gelecek Vakit</div>
+                    <div class="text-3xl font-bold mb-4">Öğle</div>
+                    <div class="text-4xl font-extrabold text-white">12:34</div>
+                    <div class="w-full h-px bg-white/10 my-6"></div>
+                    <div class="grid grid-cols-2 gap-4 w-full text-[10px] opacity-60 uppercase font-bold">
+                        <div>İmsak<br><span class="text-white text-sm">04:12</span></div>
+                        <div>Güneş<br><span class="text-white text-sm">05:45</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <section class="container mx-auto px-6 py-20">
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="glass p-8 rounded-3xl">
+                <i class="fas fa-map-marker-alt text-3xl text-[#D4AF37] mb-6"></i>
+                <h3 class="text-xl font-bold mb-3">Konum Bazlı</h3>
+                <p class="opacity-60">Dünyanın neresinde olursanız olun, konumunuza özel en hassas hesaplama yöntemleri.</p>
+            </div>
+            <div class="glass p-8 rounded-3xl">
+                <i class="fas fa-compass text-3xl text-[#D4AF37] mb-6"></i>
+                <h3 class="text-xl font-bold mb-3">Hassas Kıble</h3>
+                <p class="opacity-60">Cihazınızın sensörlerini kullanarak Kabe yönünü saniyeler içinde doğrulayın.</p>
+            </div>
+            <div class="glass p-8 rounded-3xl">
+                <i class="fas fa-bell text-3xl text-[#D4AF37] mb-6"></i>
+                <h3 class="text-xl font-bold mb-3">Zamanında Uyarı</h3>
+                <p class="opacity-60">Vakitler girmeden veya girdiğinde sizi huzur veren özel seslerle uyarır.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="border-t border-white/5 py-12 text-center opacity-40 text-sm">
+        <p>&copy; 2026 Mikat App. Tüm Hakları Saklıdır.</p>
+        <p class="mt-2 font-mono uppercase tracking-widest">Powered by Altun Dev</p>
+    </footer>
+
+    <div id="privacy-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/80" onclick="closeModal()"></div>
+        <div class="glass max-w-2xl w-full max-h-[80vh] overflow-y-auto rounded-[2rem] p-8 relative z-10">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold gold-gradient">Gizlilik Politikası</h2>
+                <button onclick="closeModal()" class="text-2xl">&times;</button>
+            </div>
+            <div class="space-y-4 text-sm leading-relaxed opacity-80 text-left">
+                <p><strong>Son Güncelleme:</strong> Nisan 2026</p>
+                <p>Mikat ("biz", "uygulama"), kullanıcı gizliliğine son derece önem verir. Uygulamamızı kullandığınızda toplanan veriler hakkında sizi bilgilendirmek isteriz:</p>
+                <h4 class="font-bold text-white uppercase">1. Veri Toplama ve Kullanım</h4>
+                <p>Uygulamamız namaz vakitlerini hesaplamak için konum (GPS) verilerinizi kullanır. Bu veriler sadece cihazınızda işlenir veya anlık sorgulama için kullanılır, sunucularımızda saklanmaz.</p>
+                <h4 class="font-bold text-white uppercase">2. Sensör Verileri</h4>
+                <p>Kıble pusulası için cihazınızın manyetometre ve ivmeölçer verilerine erişilir. Bu veriler hiçbir şekilde kaydedilmez veya paylaşılmaz.</p>
+                <h4 class="font-bold text-white uppercase">3. Üçüncü Taraf Hizmetler</h4>
+                <p>Uygulamamız bildirim altyapısı için Google Firebase kullanabilir. Bu hizmetler kendi gizlilik politikalarına tabidir.</p>
+                <h4 class="font-bold text-white uppercase">4. İletişim</h4>
+                <p>Her türlü sorunuz için bizimle iletişime geçebilirsiniz: <br>
+                <span class="text-[#D4AF37]">byaltun4@gmail.com</span></p>
+            </div>
+            <button onclick="closeModal()" class="mt-8 w-full py-4 glass rounded-xl font-bold hover:bg-white/10 transition">Anladım</button>
+        </div>
+    </div>
+
+    <script>
+        function openModal() { document.getElementById('privacy-modal').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+        function closeModal() { document.getElementById('privacy-modal').style.display = 'none'; document.body.style.overflow = 'auto'; }
+    </script>
+</body>
+</html>
