@@ -3,144 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mikat | Namaz Vakitleri & Kıble</title>
+    <title>Mikat | Vaktin Ötesinde</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap');
         
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #031815;
-            color: #e2e8f0;
-        }
-        
-        .gold-gradient {
-            background: linear-gradient(135deg, #D4AF37 0%, #F1D36E 50%, #B8860B 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        :root {
+            --gold: #D4AF37;
+            --dark-green: #021a17;
+            --emerald: #052c26;
         }
 
-        .btn-gold {
-            background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--dark-green);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .hero-gradient {
+            background: radial-gradient(circle at 50% 50%, var(--emerald) 0%, var(--dark-green) 100%);
+        }
+
+        .gold-glow {
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .glass-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .btn-premium {
+            background: linear-gradient(135deg, #D4AF37 0%, #F1D36E 100%);
+            color: #021a17;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
             transition: all 0.3s ease;
         }
 
-        .btn-gold:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        .btn-premium:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.5);
         }
 
-        .glass {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            border: 1px rgba(255, 255, 255, 0.1) solid;
+        .floating {
+            animation: floating 3s ease-in-out infinite;
         }
 
-        #privacy-modal {
-            display: none;
-            backdrop-filter: blur(8px);
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .shimmer {
+            background: linear-gradient(90deg, rgba(212,175,55,0) 0%, rgba(212,175,55,0.2) 50%, rgba(212,175,55,0) 100%);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
         }
     </style>
 </head>
-<body class="overflow-x-hidden">
+<body>
 
-    <nav class="container mx-auto px-6 py-8 flex justify-between items-center">
-        <div class="text-3xl font-extrabold gold-gradient tracking-tighter">MİKAT</div>
-        <div>
-            <button onclick="openModal()" class="text-sm font-medium opacity-60 hover:opacity-100 transition">Gizlilik Politikası</button>
+    <nav class="fixed w-full z-50 px-6 py-4 flex justify-between items-center backdrop-blur-md bg-black/20">
+        <div class="text-2xl font-bold tracking-widest text-[#D4AF37]">MİKAT</div>
+        <div class="hidden md:flex gap-8 text-sm font-medium opacity-70">
+            <a href="#features" class="hover:text-[#D4AF37] transition">Özellikler</a>
+            <a href="privacy.html" class="hover:text-[#D4AF37] transition">Gizlilik</a>
         </div>
+        <a href="https://expo.dev/artifacts/eas/bxwswHMspN9z54xonZ8jNe.apk" class="btn-premium px-6 py-2 rounded-full text-xs font-bold uppercase tracking-wider">İndir</a>
     </nav>
 
-    <main class="container mx-auto px-6 pt-12 pb-24 flex flex-col md:flex-row items-center">
-        <div class="md:w-1/2 text-center md:text-left">
-            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
-                Vaktini <span class="gold-gradient">Mikat</span> İle Yakala
-            </h1>
-            <p class="text-lg md:text-xl opacity-70 mb-10 max-w-lg">
-                Hassas namaz vakitleri, doğru Kıble açısı ve huzur veren bildirimler. Her an, her yerde maneviyata açılan kapınız.
-            </p>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                <a href="https://expo.dev/artifacts/eas/bxwswHMspN9z54xonZ8jNe.apk" class="btn-gold text-black px-10 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-3">
-                    <i class="fab fa-android text-2xl"></i>
-                    APK İndir
-                </a>
-            </div>
-            
-            <p class="mt-6 text-sm opacity-40">Tıkla ve anında telefonuna yükle.</p>
-        </div>
+    <section class="relative min-h-screen flex items-center justify-center pt-20 px-6 overflow-hidden hero-gradient">
+        <div class="absolute top-20 left-10 w-96 h-96 bg-[#D4AF37] opacity-5 blur-[120px] rounded-full"></div>
+        <div class="absolute bottom-10 right-10 w-80 h-80 bg-emerald-500 opacity-5 blur-[120px] rounded-full"></div>
 
-        <div class="md:w-1/2 mt-16 md:mt-0 relative flex justify-center">
-            <div class="absolute w-72 h-72 bg-[#D4AF37] opacity-10 blur-[100px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
-            <div class="glass w-64 h-[500px] rounded-[3rem] border-[8px] border-[#1a2e2b] relative overflow-hidden shadow-2xl">
-                <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-                    <div class="text-[#D4AF37] mb-4"><i class="fas fa-kaaba text-5xl"></i></div>
-                    <div class="text-xs gold-gradient font-bold mb-2 uppercase">Gelecek Vakit</div>
-                    <div class="text-3xl font-bold mb-4">Öğle</div>
-                    <div class="text-4xl font-extrabold text-white">12:34</div>
-                    <div class="w-full h-px bg-white/10 my-6"></div>
-                    <div class="grid grid-cols-2 gap-4 w-full text-[10px] opacity-60 uppercase font-bold">
-                        <div>İmsak<br><span class="text-white text-sm">04:12</span></div>
-                        <div>Güneş<br><span class="text-white text-sm">05:45</span></div>
+        <div class="container mx-auto flex flex-col md:flex-row items-center relative z-10">
+            <div class="md:w-3/5 text-center md:text-left mb-16 md:mb-0">
+                <div class="inline-block px-4 py-1 rounded-full border border-[#D4AF37]/30 text-[#D4AF37] text-xs font-bold mb-6 shimmer">
+                    YENİ NESİL İBADET ASİSTANI
+                </div>
+                <h1 class="text-6xl md:text-8xl font-bold mb-8 leading-none">
+                    Vaktin <br> <span class="text-[#D4AF37] gold-glow italic">Zerafeti.</span>
+                </h1>
+                <p class="text-xl opacity-60 max-w-xl mb-12 leading-relaxed">
+                    Mikat, karmaşadan uzak, saf ve modern bir namaz vakti deneyimi sunar. Sadece ibadetinize odaklanmanız için tasarlandı.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center md:justify-start">
+                    <a href="https://expo.dev/artifacts/eas/bxwswHMspN9z54xonZ8jNe.apk" class="btn-premium px-12 py-5 rounded-2xl font-bold text-lg flex items-center gap-4">
+                        <i class="fab fa-android text-2xl"></i>
+                        ŞİMDİ YÜKLE
+                    </a>
+                </div>
+            </div>
+
+            <div class="md:w-2/5 flex justify-center relative">
+                <div class="floating w-72 h-[580px] bg-[#052c26] rounded-[3.5rem] border-[10px] border-[#0a3d35] shadow-[0_0_80px_rgba(0,0,0,0.6)] overflow-hidden relative">
+                    <div class="p-8 pt-16 h-full flex flex-col">
+                        <div class="flex justify-between items-start mb-12">
+                            <div>
+                                <p class="text-[10px] uppercase tracking-widest opacity-40">Konum</p>
+                                <p class="text-sm font-bold">Kyiv, Ukrayna</p>
+                            </div>
+                            <i class="fas fa-bell text-[#D4AF37]"></i>
+                        </div>
+                        <div class="flex-1 flex flex-col items-center justify-center">
+                            <div class="w-32 h-32 rounded-full border-2 border-[#D4AF37]/20 flex items-center justify-center mb-8 relative">
+                                <div class="absolute inset-0 border-t-2 border-[#D4AF37] rounded-full animate-spin"></div>
+                                <i class="fas fa-kaaba text-4xl text-[#D4AF37]"></i>
+                            </div>
+                            <h2 class="text-sm opacity-40 uppercase mb-2">Sıradaki Vakit</h2>
+                            <h3 class="text-4xl font-bold mb-1">ÖĞLE</h3>
+                            <p class="text-5xl font-light text-[#D4AF37]">12:34</p>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 mt-8">
+                            <div class="bg-white/5 p-3 rounded-2xl text-center">
+                                <p class="text-[8px] opacity-40">İMSAK</p>
+                                <p class="text-[10px] font-bold">04:12</p>
+                            </div>
+                            <div class="bg-white/5 p-3 rounded-2xl text-center border border-[#D4AF37]/30">
+                                <p class="text-[8px] text-[#D4AF37]">ÖĞLE</p>
+                                <p class="text-[10px] font-bold">12:34</p>
+                            </div>
+                            <div class="bg-white/5 p-3 rounded-2xl text-center">
+                                <p class="text-[8px] opacity-40">YATSI</p>
+                                <p class="text-[10px] font-bold">20:45</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
+    </section>
 
-    <section class="container mx-auto px-6 py-20">
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="glass p-8 rounded-3xl">
-                <i class="fas fa-map-marker-alt text-3xl text-[#D4AF37] mb-6"></i>
-                <h3 class="text-xl font-bold mb-3">Konum Bazlı</h3>
-                <p class="opacity-60">Dünyanın neresinde olursanız olun, konumunuza özel en hassas hesaplama yöntemleri.</p>
+    <section id="features" class="py-32 px-6 container mx-auto">
+        <div class="text-center mb-20">
+            <h2 class="text-4xl font-bold mb-4 italic text-[#D4AF37]">Sadelik Güçtür.</h2>
+            <p class="opacity-50">Karmaşık menüler yok. Sadece ihtiyacınız olanlar var.</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-10">
+            <div class="glass-card p-10 rounded-[3rem]">
+                <div class="w-16 h-16 bg-[#D4AF37]/10 rounded-2xl flex items-center justify-center mb-8">
+                    <i class="fas fa-location-crosshairs text-2xl text-[#D4AF37]"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Akıllı Konum</h3>
+                <p class="opacity-50 leading-relaxed text-sm">Dünya genelinde 200'den fazla ülkede en hassas diyanet ve astronomik hesaplamalarla tam vaktinde bilgi.</p>
             </div>
-            <div class="glass p-8 rounded-3xl">
-                <i class="fas fa-compass text-3xl text-[#D4AF37] mb-6"></i>
-                <h3 class="text-xl font-bold mb-3">Hassas Kıble</h3>
-                <p class="opacity-60">Cihazınızın sensörlerini kullanarak Kabe yönünü saniyeler içinde doğrulayın.</p>
+            <div class="glass-card p-10 rounded-[3rem]">
+                <div class="w-16 h-16 bg-[#D4AF37]/10 rounded-2xl flex items-center justify-center mb-8">
+                    <i class="fas fa-compass text-2xl text-[#D4AF37]"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Kusursuz Kıble</h3>
+                <p class="opacity-50 leading-relaxed text-sm">Cihazınızın jiroskop ve manyetometresini kullanarak Kabe'yi santimetrik sapma olmadan bulun.</p>
             </div>
-            <div class="glass p-8 rounded-3xl">
-                <i class="fas fa-bell text-3xl text-[#D4AF37] mb-6"></i>
-                <h3 class="text-xl font-bold mb-3">Zamanında Uyarı</h3>
-                <p class="opacity-60">Vakitler girmeden veya girdiğinde sizi huzur veren özel seslerle uyarır.</p>
+            <div class="glass-card p-10 rounded-[3rem]">
+                <div class="w-16 h-16 bg-[#D4AF37]/10 rounded-2xl flex items-center justify-center mb-8">
+                    <i class="fas fa-moon text-2xl text-[#D4AF37]"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Gece Modu</h3>
+                <p class="opacity-50 leading-relaxed text-sm">Gözlerinizi yormayan, ruhunuzu dinlendiren derin karanlık arayüz ile gece ibadetlerinizde yanınızda.</p>
             </div>
         </div>
     </section>
 
-    <footer class="border-t border-white/5 py-12 text-center opacity-40 text-sm">
-        <p>&copy; 2026 Mikat App. Tüm Hakları Saklıdır.</p>
-        <p class="mt-2 font-mono uppercase tracking-widest">Powered by Altun Dev</p>
+    <section class="py-32 px-6">
+        <div class="container mx-auto glass-card rounded-[4rem] p-16 text-center relative overflow-hidden">
+            <div class="absolute inset-0 shimmer opacity-10"></div>
+            <h2 class="text-5xl font-bold mb-8">Maneviyatı Yanında Taşı.</h2>
+            <p class="text-xl opacity-60 mb-12 max-w-2xl mx-auto">Hemen Mikat'ı indir ve tamamen ücretsiz, reklamsız ve saf bir deneyime başla.</p>
+            <a href="https://expo.dev/artifacts/eas/bxwswHMspN9z54xonZ8jNe.apk" class="btn-premium px-16 py-6 rounded-3xl font-bold text-xl inline-flex items-center gap-4">
+                APK OLARAK İNDİR
+            </a>
+        </div>
+    </section>
+
+    <footer class="py-20 border-t border-white/5 text-center">
+        <p class="text-2xl font-bold gold-gradient mb-4">MİKAT</p>
+        <p class="opacity-40 text-sm mb-8">byaltun4@gmail.com</p>
+        <div class="flex justify-center gap-8 opacity-40 text-xs uppercase tracking-widest">
+            <a href="privacy.html" class="hover:text-[#D4AF37]">Gizlilik</a>
+            <span>&copy; 2026 ALTUN DEV</span>
+        </div>
     </footer>
 
-    <div id="privacy-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4">
-        <div class="absolute inset-0 bg-black/80" onclick="closeModal()"></div>
-        <div class="glass max-w-2xl w-full max-h-[80vh] overflow-y-auto rounded-[2rem] p-8 relative z-10">
-            <div class="flex justify-between items-center mb-6">
-                <h2 class="text-2xl font-bold gold-gradient">Gizlilik Politikası</h2>
-                <button onclick="closeModal()" class="text-2xl">&times;</button>
-            </div>
-            <div class="space-y-4 text-sm leading-relaxed opacity-80 text-left">
-                <p><strong>Son Güncelleme:</strong> Nisan 2026</p>
-                <p>Mikat ("biz", "uygulama"), kullanıcı gizliliğine son derece önem verir. Uygulamamızı kullandığınızda toplanan veriler hakkında sizi bilgilendirmek isteriz:</p>
-                <h4 class="font-bold text-white uppercase">1. Veri Toplama ve Kullanım</h4>
-                <p>Uygulamamız namaz vakitlerini hesaplamak için konum (GPS) verilerinizi kullanır. Bu veriler sadece cihazınızda işlenir veya anlık sorgulama için kullanılır, sunucularımızda saklanmaz.</p>
-                <h4 class="font-bold text-white uppercase">2. Sensör Verileri</h4>
-                <p>Kıble pusulası için cihazınızın manyetometre ve ivmeölçer verilerine erişilir. Bu veriler hiçbir şekilde kaydedilmez veya paylaşılmaz.</p>
-                <h4 class="font-bold text-white uppercase">3. Üçüncü Taraf Hizmetler</h4>
-                <p>Uygulamamız bildirim altyapısı için Google Firebase kullanabilir. Bu hizmetler kendi gizlilik politikalarına tabidir.</p>
-                <h4 class="font-bold text-white uppercase">4. İletişim</h4>
-                <p>Her türlü sorunuz için bizimle iletişime geçebilirsiniz: <br>
-                <span class="text-[#D4AF37]">byaltun4@gmail.com</span></p>
-            </div>
-            <button onclick="closeModal()" class="mt-8 w-full py-4 glass rounded-xl font-bold hover:bg-white/10 transition">Anladım</button>
-        </div>
-    </div>
-
-    <script>
-        function openModal() { document.getElementById('privacy-modal').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
-        function closeModal() { document.getElementById('privacy-modal').style.display = 'none'; document.body.style.overflow = 'auto'; }
-    </script>
 </body>
 </html>
