@@ -3,56 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mikat | Gizlilik Politikası</title>
+    <title>Mikat | Gizlilik & Güvenlik</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap');
+        
+        :root {
+            --gold: #D4AF37;
+            --dark-green: #010f0d;
+            --glass-bg: rgba(255, 255, 255, 0.02);
+        }
+
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #031815;
-            color: #e2e8f0;
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--dark-green);
+            color: #ffffff;
+            line-height: 1.7;
         }
-        .gold-border {
-            border-left: 4px solid #D4AF37;
+
+        .gold-gradient {
+            background: linear-gradient(135deg, #D4AF37 0%, #F1D36E 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
+
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .section-card {
+            transition: all 0.3s ease;
+            border-left: 2px solid transparent;
+        }
+
+        .section-card:hover {
+            border-left: 2px solid var(--gold);
+            background: rgba(212, 175, 55, 0.03);
+            padding-left: 1.5rem;
+        }
+
+        .glow-dot {
+            height: 8px;
+            width: 8px;
+            background-color: var(--gold);
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 10px var(--gold);
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--dark-green); }
+        ::-webkit-scrollbar-thumb { background: #1a2e2b; border-radius: 10px; }
     </style>
 </head>
-<body class="py-12 px-6">
-    <div class="max-w-3xl mx-auto bg-white/5 p-8 md:p-12 rounded-[2rem] border border-white/10 shadow-2xl">
-        <h1 class="text-4xl font-extrabold mb-2 text-[#D4AF37]">Gizlilik Politikası</h1>
-        <p class="opacity-50 mb-8 text-sm uppercase tracking-widest">Son Güncelleme: 27 Nisan 2026</p>
+<body class="antialiased overflow-x-hidden">
 
-        <div class="space-y-8 leading-relaxed">
-            <section class="gold-border pl-6">
-                <h2 class="text-xl font-bold mb-3 text-white">1. Giriş</h2>
-                <p class="opacity-80">Mikat uygulaması olarak gizliliğinize saygı duyuyoruz. Bu politika, uygulamamızı kullandığınızda hangi verilerin nasıl işlendiğini açıklar. Uygulamayı kullanarak bu şartları kabul etmiş sayılırsınız.</p>
-            </section>
-
-            <section class="gold-border pl-6">
-                <h2 class="text-xl font-bold mb-3 text-white">2. Konum Verileri</h2>
-                <p class="opacity-80">Namaz vakitlerinin hatasız hesaplanabilmesi için cihazınızın hassas konum (GPS) bilgisine erişim gerekir. Bu veriler <strong>hiçbir uzak sunucuda saklanmaz</strong>; sadece vakit hesaplaması ve Kıble yönü tespiti için anlık olarak kullanılır.</p>
-            </section>
-
-            <section class="gold-border pl-6">
-                <h2 class="text-xl font-bold mb-3 text-white">3. Cihaz Sensörleri</h2>
-                <p class="opacity-80">Kıble pusulası özelliği, cihazınızın manyetometre ve ivmeölçer sensörlerini kullanır. Bu sensörlerden gelen veriler hiçbir şekilde kaydedilmez, paylaşılmaz veya pazarlama amacıyla kullanılmaz.</p>
-            </section>
-
-            <section class="gold-border pl-6">
-                <h2 class="text-xl font-bold mb-3 text-white">4. Bildirimler</h2>
-                <p class="opacity-80">Vakit uyarıları ve bilgilendirmeler için bildirim izni istenir. Bildirimler yerel (local) veya Firebase üzerinden gönderilebilir. Firebase kullanımı durumunda, Google'ın standart veri politikaları geçerlidir.</p>
-            </section>
-
-            <section class="gold-border pl-6">
-                <h2 class="text-xl font-bold mb-3 text-white">5. İletişim</h2>
-                <p class="opacity-80 text-lg">Bu politika ile ilgili sorularınız için bizimle iletişime geçebilirsiniz:</p>
-                <p class="mt-2 font-bold text-[#D4AF37]">E-posta: byaltun4@gmail.com</p>
-            </section>
-        </div>
-
-        <div class="mt-12 pt-8 border-t border-white/10 text-center">
-            <a href="index.html" class="text-sm opacity-40 hover:opacity-100 transition underline">Ana Sayfaya Dön</a>
-        </div>
+    <div class="fixed top-0 left-0 w-full h-full -z-10">
+        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-[#D4AF37] opacity-[0.03] blur-[120px] rounded-full"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-emerald-900 opacity-[0.05] blur-[120px] rounded-full"></div>
     </div>
+
+    <div class="container mx-auto px-6 py-16 md:py-24">
+        <header class="max-w-4xl mx-auto text-center mb-20">
+            <a href="index.html" class="inline-flex items-center gap-2 text-sm opacity-40 hover:opacity-100 transition mb-8 uppercase tracking-[0.2em]">
+                <i class="fas fa-arrow-left"></i> Geri Dön
+            </a>
+            <h1 class="text-5xl md:text-6xl font-bold mb-6">Gizlilik <span class="gold-gradient">Manifestosu</span></h1>
+            <p class="text-lg opacity-50 max-w-2xl mx-auto italic">
+                "Verileriniz, ibadetiniz kadar mahremdir."
+            </p>
+        </header>
+
+        <main class="max-w-4xl mx-auto glass-panel rounded-[3rem] p-8 md:p-16 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#D4AF37]/40 to-transparent"></div>
+
+            <div class="space-y-16">
+                <section class="section-card p-4 rounded-xl">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span class="glow-dot"></span>
+                        <h2 class="text-2xl font-bold tracking-tight">Veri İlkelerimiz</h2>
+                    </div>
+                    <p class="opacity-60 text-lg">
+                        Mikat, minimalizm felsefesiyle geliştirilmiştir. Sadece uygulamanın çalışması için <strong>mutlak gerekli</strong> olan verilere erişilir. Hiçbir kişisel bilginiz reklam ağlarına satılmaz veya üçüncü taraflarla paylaşılmaz.
+                    </p>
+                </section>
+
+                <section class="section-card p-4 rounded-xl">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span class="glow-dot"></span>
+                        <h2 class="text-2xl font-bold tracking-tight">Hassas Konum Erişimi</h2>
+                    </div>
+                    <p class="opacity-60 text-lg mb-4">
+                        Namaz vakitleri koordinatlarınıza göre milisaniyelik hassasiyetle hesaplanır. 
+                    </p>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <li class="bg-white/5 p-4 rounded-2xl flex items-start gap-3">
+                            <i class="fas fa-check-circle text-[#D4AF37] mt-1"></i>
+                            <span class="text-sm opacity-80">Konum veriniz sunuculara gönderilmez.</span>
+                        </li>
+                        <li class="bg-white/5 p-4 rounded-2xl flex items-start gap-3">
+                            <i class="fas fa-check-circle text-[#D4AF37] mt-1"></i>
+                            <span class="text-sm opacity-80">Sadece vakit hesaplama motorunda anlık kullanılır.</span>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="section-card p-4 rounded-xl">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span class="glow-dot"></span>
+                        <h2 class="text-2xl font-bold tracking-tight">Sensör ve Pusula Kullanımı</h2>
+                    </div>
+                    <p class="opacity-60 text-lg italic">
+                        Kıble yönü için kullanılan manyetometre verileri cihazınızın işlemcisinde kalır. Mikat ekibi dahil hiç kimse bu verilere uzaktan erişemez.
+                    </p>
+                </section>
+
+                <section class="section-card p-4 rounded-xl">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span class="glow-dot"></span>
+                        <h2 class="text-2xl font-bold tracking-tight">Firebase ve Bildirimler</h2>
+                    </div>
+                    <p class="opacity-60 text-lg">
+                        Anlık bildirim altyapısı için Google Firebase kullanılmaktadır. Bu servis, anonim cihaz kimliklerini bildirim iletimi için kullanabilir. Daha fazla bilgi için Google Gizlilik Politikası'nı inceleyebilirsiniz.
+                    </p>
+                </section>
+
+                <div class="pt-12 border-t border-white/5 text-center">
+                    <p class="text-sm opacity-40 uppercase tracking-widest mb-4">Bize Ulaşın</p>
+                    <a href="mailto:byaltun4@gmail.com" class="text-2xl font-bold gold-gradient hover:opacity-80 transition">
+                        byaltun4@gmail.com
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <footer class="mt-20 text-center opacity-30 text-xs tracking-widest uppercase">
+            &copy; 2026 Mikat Application Framework <br> 
+           Dev|ByAltun
+        </footer>
+    </div>
+
 </body>
 </html>
